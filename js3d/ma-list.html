@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book List | Bookorama</title>
+    <meta name="description" content="View your personal book collection">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ma-list.html" class="active">My List</a></li>
+                    <li><a href="add.html">Add Books</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo">
+            <a href="index.html"><img src="img/ChatGPT Image 16 mai 2025, 21_41_00.png"></a>
+        </div>
+        <div class="search-container" >
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search books..." aria-label="Search books">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="my-list-container">
+            <h1 class="page-title"><i class="fas fa-bookmark"></i> My Book List</h1>
+            
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalBooks">0</div>
+                    <div class="stat-label">Total Books</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="readBooks">0</div>
+                    <div class="stat-label">Read</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="unreadBooks">0</div>
+                    <div class="stat-label">Not Read</div>
+                </div>
+            </div>
+            
+            <div class="book-grid" id="bookGrid">
+                <!-- Books will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+<div id="bookModal" class="modal">
+            <div class="modal-content">
+                <button id="closeModal" class="close-btn" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-body">
+                    <img id="modalImage" class="modal-image" alt="Book cover">
+                    <div class="modal-details">
+                        <h2 id="modalTitle"></h2>
+                        <p id="modalAuthor" class="author"></p>
+                        <p id="modalDescription" class="description"></p>
+                        <div class="modal-actions">
+                            <button id="addToListBtn" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add to My List
+                            </button>
+                            <button id="deleteBookBtn" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Delete Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookGrid = document.getElementById('bookGrid');
+            const statsBar = document.getElementById('statsBar');
+            const totalBooksEl = document.getElementById('totalBooks');
+            const readBooksEl = document.getElementById('readBooks');
+            const unreadBooksEl = document.getElementById('unreadBooks');
+            
+            // Load books from localStorage or initialize empty array
+            let myBooks = JSON.parse(localStorage.getItem('myBookList')) || [];
+            
+            // Initialize read status if not exists
+            myBooks = myBooks.map(book => {
+                if (book.read === undefined) {
+                    book.read = false;
+                }
+                return book;
+            });
+            
+            // Save books to localStorage
+            function saveBooks() {
+                localStorage.setItem('myBookList', JSON.stringify(myBooks));
+                updateStats();
+            }
+            
+            // Update statistics
+            function updateStats() {
+                const total = myBooks.length;
+                const read = myBooks.filter(book => book.read).length;
+                const unread = total - read;
+                
+                totalBooksEl.textContent = total;
+                readBooksEl.textContent = read;
+                unreadBooksEl.textContent = unread;
+            }
+            
+            // Render books in the grid
+            function renderBooks() {
+                bookGrid.innerHTML = '';
+                
+                if (myBooks.length === 0) {
+                    bookGrid.innerHTML = `
+                        <div class="empty-state">
+                            <img src="img/bookshelf.png" alt="Empty bookshelf">
+                            <h3>Your list is empty!</h3>
+                            <p>Add books from the main page to see them here.</p>
+                            <a href="index.html" class="btn btn-primary">
+                                <i class="fas fa-book-open"></i> Browse Books
+                            </a>
+                        </div>
+                    `;
+                    statsBar.style.display = 'none';
+                    return;
+                }
+                
+                statsBar.style.display = 'flex';
+                updateStats();
+                
+                myBooks.forEach((book, index) => {
+                    const bookCard = document.createElement('div');
+                    bookCard.className = 'book-card';
+                    bookCard.innerHTML = `
+                        <img src="${book.image}" alt="${book.title}" class="book-cover">
+                        <div class="book-info">
+                            <h3 class="book-title">${book.title}</h3>
+                            <p class="book-author">${book.author || 'Unknown'}</p>
+                        </div>
+                        <button class="delete-btn" data-index="${index}">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <button class="read-toggle ${book.read ? 'read' : ''}" data-index="${index}">
+                            <i class="fas fa-${book.read ? 'check' : 'book'}"></i>
+                            ${book.read ? 'Read' : 'Not Read'}
+                        </button>
+                    `;
+                    bookGrid.appendChild(bookCard);
+                    
+                    // Add click event to view book details
+                    bookCard.addEventListener('click', function(e) {
+                        // Don't trigger if delete or read buttons were clicked
+                        if (!e.target.closest('.delete-btn') && !e.target.closest('.read-toggle')) {
+                            showBookModal(book);
+                        }
+                    });
+                });
+                
+                // Add delete functionality
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const index = this.getAttribute('data-index');
+                        if (confirm('Remove this book from your list?')) {
+                            myBooks.splice(index, 1);
+                            saveBooks();
+                            renderBooks();
+                        }
+                    });
+                });
+                
+                // Add read toggle functionality
+                document.querySelectorAll('.read-toggle').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const index = this.getAttribute('data-index');
+                        myBooks[index].read = !myBooks[index].read;
+                        saveBooks();
+                        
+                        // Update button appearance
+                        if (myBooks[index].read) {
+                            this.classList.add('read');
+                            this.innerHTML = `<i class="fas fa-check"></i> Read`;
+                        } else {
+                            this.classList.remove('read');
+                            this.innerHTML = `<i class="fas fa-book"></i> Not Read`;
+                        }
+                    });
+                });
+            }
+           function showBookModal(book, index) {
+    const modal = document.getElementById('bookModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalAuthor = document.getElementById('modalAuthor');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = document.getElementById('closeModal');
+    const addToListBtn = document.getElementById('addToListBtn');
+    const deleteBtn = document.getElementById('deleteBookBtn');
+
+    modalImage.src = book.image;
+    modalTitle.textContent = book.title;
+    modalAuthor.textContent = "Author: " + (book.author || "Unknown");
+    modalDescription.textContent = book.description || "No description available.";
+    modal.style.display = 'flex';
+
+    // Hide add button since we're already in "My List"
+    addToListBtn.style.display = 'none';
+
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    deleteBtn.onclick = () => {
+        if (confirm("Are you sure you want to delete this book?")) {
+            // Get current list from localStorage
+            let myBookList = JSON.parse(localStorage.getItem('myBookList')) || [];
+            
+            // Find the exact book to delete (using index for more reliable deletion)
+            if (index !== undefined && index >= 0 && index < myBookList.length) {
+                myBookList.splice(index, 1);
+            } else {
+                // Fallback: try to find by image if index isn't available
+                myBookList = myBookList.filter(b => b.image !== book.image);
+            }
+            
+            // Save updated list
+            localStorage.setItem('myBookList', JSON.stringify(myBookList));
+            
+            // Close modal
+            modal.style.display = 'none';
+            
+            // Force complete page refresh to ensure all states are properly updated
+            window.location.reload();
+        }
+    };
+}
+
+           
+            // Initial render
+            renderBooks();
+        });
+    </script>
+</body>
+</html>
