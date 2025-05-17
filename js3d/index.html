@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookorama - Your Book Collection</title>
+    <meta name="description" content="Manage and explore your personal book collection">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="ma-list.html">My List</a></li>
+                    <li><a href="add.html">Add Books</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo">
+                <a href="index.html"><img src="img/ChatGPT Image 16 mai 2025, 21_41_00.png"></a>
+            </div>
+        <div class="search-container home">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search books..." aria-label="Search books">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="controls">
+            <label for="toggleVisibilityCheckbox" class="toggle-btn">
+                <input type="checkbox" id="toggleVisibilityCheckbox">
+                <span class="toggle-text">Hide books</span>
+            </label>
+            
+            <div class="slider-nav">
+                <button id="prev" class="slider-button" aria-label="Previous book">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next" class="slider-button" aria-label="Next book">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider" id="bookSlider"></div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="deleteAllBtn" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i> Delete All Books
+            </button>
+        </div>
+
+        <!-- Modal -->
+        <div id="bookModal" class="modal">
+            <div class="modal-content">
+                <button id="closeModal" class="close-btn" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-body">
+                    <img id="modalImage" class="modal-image" alt="Book cover">
+                    <div class="modal-details">
+                        <h2 id="modalTitle"></h2>
+                        <p id="modalAuthor" class="author"></p>
+                        <p id="modalDescription" class="description"></p>
+                        <div class="modal-actions">
+                            <button id="addToListBtn" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add to My List
+                            </button>
+                            <button id="deleteBookBtn" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Delete Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Bookorama. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>
