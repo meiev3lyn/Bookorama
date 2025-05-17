@@ -152,7 +152,7 @@ function updateBooks() {
 let slider = document.querySelector('.slider');
 let next = document.getElementById('next');
 let prev = document.getElementById('prev');
-let active = 11;
+let active = 14;
 let items = [];
 function deleteBook(bookToDelete) {
   // حذف من الكتب المخزنة (إن كان من الكتب المضافة)
