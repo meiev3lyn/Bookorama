@@ -7,7 +7,7 @@ const originalBooks = [
     image: "img/they both die at the end.jpg"
   },
   {
-    title: "The help",
+    title: "The Help",
     author: "Kathryn Stockett",
     description: "The Help is a historical fiction story set in Jackson, Mississippi during the early 1960s, focusing on the experiences of African American maids working in white households during the Jim Crow era. The story unfolds through the perspectives of three main characters: Aibileen Clark, a Black maid; Minny Jackson, another Black maid; and Skeeter Phelan, a white woman who aspires to be a writer.",
     image: "img/js3d.jpg"
@@ -25,13 +25,13 @@ const originalBooks = [
     image: "img/the song of achilles.png"
   },
   {
-    title: "Murder on family grounds",
+    title: "Murder on Family Grounds",
     author: "Susan Rowland",
     description: "Murder on Family Grounds follows Mary Wandwalker as she navigates a complex murder mystery intertwined with her own past and the secrets of the Falconer family. Mary, now jobless, is drawn into the investigation when members of the Falconer family are killed, with one of the deaths seemingly connected to a letter she wrote decades ago. Her past, including a tragic loss and a difficult decision surrounding her pregnancy, is revealed as crucial to the case, as is her relationship with the Falconer family, who had refused to help her.",
     image: "img/12d0afec49bbf039a3c6913bf762ecb9.jpg"
   },
   {
-    title:"The fine print",
+    title:"The Fine Print",
     author:"Lauren Asher",
     description:"The Fine Print by Lauren Asher follows Rowan, the new Dreamland Parks Director, and Zahra, a Dreamland employee. Rowan is tasked with revitalizing Dreamland and is initially dismissive of Zahra. Their relationship begins with dislike but evolves into a complex and romantic connection. Ultimately, they must work together to succeed, navigating their personal and professional lives, and come to terms with the challenges they face. ",
     image:"img/the fine print.jpg"
@@ -43,13 +43,13 @@ const originalBooks = [
     image: "img/2d85b14b1a846315f97b5e4578c3ef51.jpg"
   },
   {
-    title: "Ignite me",
+    title: "Ignite Me",
     author: "Taherih Mafi",
     description: "“Ignite Me,” the thrilling third installment of Tahereh Mafi’s Shatter Me series, opens with a heart-stopping turn of events. Juliette Ferrars, the protagonist with lethal-touch powers, finds herself in the wake of a near-fatal shooting. She wakes up in the clutches of her former captor and complex ally, Aaron Warner Anderson, son of the cruel Supreme Commander Anderson who shot her. ",
     image: "img/ignite me.jpg"
   },
   {
-    title: "Just love HER",
+    title: "Just Love HER",
     author: "Raz Mihal",
     description: "Just Love Her by Raz Mihal is a spiritual exploration of divine love and soul connection, presented as a poetic and reflective journey through heartfelt meditations. Mihal explores his experience of an eternal bond with a beloved soul, Her, emphasizing love's transformative power and its connection to the divine feminine within. The book delves into the nature of love, its challenges, and its capacity to bring about spiritual growth, offering philosophical insights and reflections on spiritual connection and divine love. ",
     image: "img/just love her.jpg"
@@ -67,7 +67,7 @@ const originalBooks = [
     image: "img/d1f5a7ff3ec6725a42c80491e8b83833.jpg"
   },
   {
-    title: "The prison healer",
+    title: "The Prison Healer",
     author:"Lynette Noni",
     description: "The Prison Healer follows 17-year-old Kiva, who has spent ten years surviving in the notorious prison of Zalindov as its healer. When the Rebel Queen is captured, Kiva is tasked with keeping her alive long enough for her to face the Trial by Ordeal, a series of deadly challenges. Kiva receives a coded message from her family, urging her to protect the Queen, and ultimately volunteers to face the Trials in her place, hoping to secure their freedom. However, no one has ever survived the Trials, and Kiva faces not only the challenges but also a brewing prison rebellion and a mysterious new inmate vying for her affections, in the midst of a plague sweeping Zalindov.",
     image: "img/prison healer.jpg"
@@ -79,19 +79,19 @@ const originalBooks = [
     image: "img/macbeth.jpg"
   },
   {
-    title: "The ballad of songbirds and snakes",
+    title: "The Ballad of Songbirds and Snakes",
     author:"Suzanne Collins",
     description: "The Ballad of Songbirds and Snakes is a prequel to The Hunger Games series, set 64 years before Katniss Everdeen's story. It follows a young Coriolanus Snow, who is assigned to mentor a tribute from District 12 during the 10th Hunger Games. As he navigates the challenges of the games and his own ambitions, Coriolanus grapples with moral dilemmas and the nature of power, ultimately shaping his future as the tyrannical president of Panem.",
     image: "img/songbirds and snakes.jpg"
   },
   {
-    title: "The bell jar",
+    title: "The Bell Jar",
     author:"Sylvia Plath",
     description:"The Bell Jar by Sylvia Plath follows Esther Greenwood, a promising young woman who enters a period of mental health crisis as she navigates societal expectations and her own identity. Esther's journey involves a prestigious summer internship, a boyfriend, and a sense of unease with the path laid out for her as a woman in the 1950s. She experiences a breakdown, attempts suicide, and is eventually admitted to a psychiatric hospital. The novel explores themes of mental illness, societal pressures on women, and the struggle for individual identity.",
     image:"img/the bell jar.jpg"
   },
   {
-    title:"The cruel prince",
+    title:"The Cruel Prince",
     author:"Holly Black",
     description: "The Cruel Prince,the first book in The Folk of the Air series by Holly Black, follows mortal girl Jude as she navigates the treacherous world of Elfhame, a High Court of Faeries. After witnessing the murder of her parents, Jude and her sisters are taken to live among the fey, where she strives to prove her worth in a society that despises humans. Jude's ambition to belong and gain power leads her into political intrigues, deceptions, and even bloodshed, particularly with Prince Cardan, the cruelest of the High Court. As she forms alliances and faces betrayals, Jude's journey reveals the complex nature of loyalty and vengeance in a world where the line between mortal and fey is blurred.",
     image:"img/the cruel prince.jpg"
@@ -115,13 +115,13 @@ const originalBooks = [
     image:"img/twisted games.jpg"
   },
   {
-    title:"The mortal instruments : City of Bones",
+    title:"The Mortal Instruments : City of Bones",
     author:"Cassandra Clare",
     description:"City of Bones by Cassandra Clare follows 15-year-old Clary Fray as she discovers she is a Shadowhunter, a warrior who hunts demons, after witnessing a murder at a nightclub. Her mother, Jocelyn, disappears, and Clary is drawn into a world of Shadowhunters, werewolves, vampires, and other supernatural creatures. Clary joins forces with Jace, Isabelle, and Alec, Shadowhunters, to find her mother and unravel the secrets surrounding her lineage and the mysterious Mortal Cup. The book introduces the supernatural world of the Mortal Instruments and Clary's journey into becoming a shadowhunter.",
     image:"img/city of bones.jpg"
   },
   {
-    title:"The mortal instruments : City of Ashes",
+    title:"The Mortal Instruments : City of Ashes",
     author:"Cassandra Clare",
     description:"The book follows 16-year-old Clary Fray, who has recently discovered that she is not an ordinary mortal, but a Shadowhunter, part of a group who saves the world from demons. In City of Bones (2007) the first book of the series, Clary also learned that she is the daughter of rogue Shadowhunter Valentine Morgenstern and that her romantic interest, Jace Wayland, may be her brother. Struggling with these emotional upheavals, Clary and Jace also have to stop Valentine, who is summoning an army of horrifying demons, killing Downworlder teenagers, and collecting the magical artifacts called the “Mortal Instruments” to change the world forever.",
     image:"img/city of ashes.jpg"
