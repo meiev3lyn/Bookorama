@@ -1,4 +1,5 @@
-/* -- Base Styles -- */
+/* ===== Base Styles ===== */
+/* Example using Poppins + Lora */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500&display=swap');
 
 :root {
@@ -21,6 +22,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 /*Typography*/
 body {
@@ -31,6 +33,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
 }
 
 h1,
@@ -70,7 +73,7 @@ a {
 /* Layout  */
 .main-header {
   padding: 10px 30px;
-  height: 110px;
+  height: 108px;
   background-color: rgba(0, 0, 0, 0.425);
   backdrop-filter: blur(5px);
   display: flex;
@@ -245,6 +248,7 @@ a {
   transform-origin: center;
   text-align: center;
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .item img {
@@ -826,6 +830,7 @@ a {
   transition: var(--transition);
   box-shadow: var(--shadow);
   position: relative;
+  cursor: pointer;
 }
 
 .book-card:hover {
@@ -835,6 +840,8 @@ a {
 
 .search-container:not(.home) {
   opacity: 0;
+  overflow: hidden;
+  width: 0;
 }
 
 .book-cover {
