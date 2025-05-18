@@ -7,14 +7,15 @@
   <title>Add New Book | Bookorama</title>
   <meta name="description" content="Add a new book to your Bookorama collection">
   <link rel="stylesheet" href="style.css">
- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
+  <!--Header and navigation-->
   <header class="main-header">
     <div class="header-content">
       <nav class="main-nav">
@@ -33,7 +34,7 @@
       <input type="text" id="searchInput" placeholder="Search books..." aria-label="Search books">
     </div>
   </header>
-
+  <!--Adding new books and their details-->
   <main class="main-content">
     <div class="add-book-container">
       <h1 class="add-book-title"><i class="fas fa-plus-circle"></i> Add New Books</h1>
@@ -88,19 +89,17 @@
       const fileNameDisplay = document.getElementById('fileName');
       const imagePreview = document.getElementById('imagePreview');
 
-      // Preview image when selected
+      // Previewing image when selected.
       bookImageInput.addEventListener('change', function (e) {
         const file = e.target.files[0];
         if (file) {
           fileNameDisplay.textContent = file.name;
 
-          // Validate file type
+          // Validating file size (max 2MB).
           if (!file.type.match('image.*')) {
             alert('Please select an image file (JPEG, PNG, etc.)');
             return;
           }
-
-          // Validate file size (max 2MB)
           if (file.size > 2 * 1024 * 1024) {
             alert('Image size should be less than 2MB');
             return;
@@ -127,7 +126,6 @@
           alert('Please enter a book title');
           return;
         }
-
         if (!file) {
           alert('Please choose a book cover image');
           return;
@@ -142,15 +140,15 @@
             image: reader.result
           };
 
-          // Save to localStorage
+          // Saving to localStorage.
           let books = JSON.parse(localStorage.getItem('allBooks')) || [];
           books.push(newBook);
           localStorage.setItem('allBooks', JSON.stringify(books));
 
-          // Show success message
+          // Showing success message.
           alert('Book added successfully!');
 
-          // Redirect to home page after 1 second
+          // Redirecting to home page after 1 second.
           setTimeout(() => {
             window.location.href = 'index.html';
           }, 500);
