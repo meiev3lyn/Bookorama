@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
+    <!--Header and navigation-->
     <header class="main-header">
         <div class="header-content">
             <nav class="main-nav">
@@ -23,21 +26,21 @@
             </nav>
         </div>
         <div class="logo">
-                <a href="index.html"><img src="img/ChatGPT Image 16 mai 2025, 21_41_00.png"></a>
-            </div>
+            <a href="index.html"><img src="img/ChatGPT Image 16 mai 2025, 21_41_00.png"></a>
+        </div>
         <div class="search-container home">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="searchInput" placeholder="Search books..." aria-label="Search books">
         </div>
     </header>
-
+    <!--Hiding books-->
     <main class="main-content">
         <div class="controls">
             <label for="toggleVisibilityCheckbox" class="toggle-btn">
                 <input type="checkbox" id="toggleVisibilityCheckbox">
                 <span class="toggle-text">Hide books</span>
             </label>
-            
+            <!--Moving slider from left to right-->
             <div class="slider-nav">
                 <button id="prev" class="slider-button" aria-label="Previous book">
                     <i class="fas fa-chevron-left"></i>
@@ -47,11 +50,11 @@
                 </button>
             </div>
         </div>
-
+        <!--Slider container-->
         <div class="slider-container">
             <div class="slider" id="bookSlider"></div>
         </div>
-
+        <!--Deleting books-->
         <div class="action-buttons">
             <button id="deleteAllBtn" class="btn btn-danger">
                 <i class="fas fa-trash-alt"></i> Delete All Books
@@ -83,11 +86,12 @@
             </div>
         </div>
     </main>
-
+    <!--Footer-->
     <footer class="main-footer">
         <p class="emptylist">&copy; 2025 Bookorama. All rights reserved.</p>
     </footer>
 
     <script src="app.js" type="module"></script>
 </body>
+
 </html>
